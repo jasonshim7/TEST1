@@ -29,7 +29,7 @@ export async function updateLead(id: number, formData: FormData): Promise<Action
 
   const parsed = schema.safeParse(raw);
   if (!parsed.success) {
-    return { success: false, message: parsed.error.errors[0].message };
+    return { success: false, message: parsed.error.issues[0].message };
   }
 
   try {

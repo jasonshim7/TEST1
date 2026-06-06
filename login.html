@@ -304,8 +304,9 @@
       if (!password) valid = false;
 
       if (valid) {
-        showAlert('로그인에 성공했습니다!', 'success');
+        showAlert('로그인에 성공했습니다! 잠시 후 이동합니다...', 'success');
         form.reset();
+        setTimeout(() => { window.location.href = 'index.html'; }, 1500);
       }
     });
   </script>

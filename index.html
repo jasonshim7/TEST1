@@ -15,70 +15,273 @@
       font-family: 'Segoe UI', sans-serif;
       background: #f0f2f5;
       min-height: 100vh;
+      color: #1a1a1a;
     }
 
+    /* ── 헤더 ── */
     header {
       background: #fff;
       box-shadow: 0 1px 8px rgba(0,0,0,0.08);
       padding: 0 40px;
-      height: 60px;
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
     .logo {
-      font-size: 20px;
-      font-weight: 700;
+      font-size: 22px;
+      font-weight: 800;
       color: #4f6ef7;
+      letter-spacing: -0.5px;
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #555;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: #4f6ef7; }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #4f6ef7, #a78bfa);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
     }
 
     .logout-btn {
       padding: 8px 18px;
-      background: #4f6ef7;
-      color: #fff;
-      border: none;
+      background: transparent;
+      color: #4f6ef7;
+      border: 1.5px solid #4f6ef7;
       border-radius: 8px;
       font-size: 14px;
       font-weight: 600;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background 0.2s, color 0.2s;
     }
 
     .logout-btn:hover {
-      background: #3a57e8;
+      background: #4f6ef7;
+      color: #fff;
     }
 
+    /* ── 히어로 ── */
     .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 80px 20px;
+      background: linear-gradient(135deg, #4f6ef7 0%, #a78bfa 100%);
+      color: #fff;
       text-align: center;
+      padding: 80px 20px 100px;
     }
 
     .hero h1 {
-      font-size: 32px;
-      color: #1a1a1a;
-      margin-bottom: 12px;
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
     }
 
     .hero p {
+      font-size: 17px;
+      opacity: 0.85;
+      margin-bottom: 32px;
+    }
+
+    .hero-btn {
+      padding: 14px 32px;
+      background: #fff;
+      color: #4f6ef7;
+      border: none;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    /* ── 카드 섹션 ── */
+    .section {
+      max-width: 1000px;
+      margin: -40px auto 60px;
+      padding: 0 20px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 28px 24px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.1);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+
+    .icon-blue  { background: #eff2ff; }
+    .icon-green { background: #e6ffed; }
+    .icon-purple{ background: #f5f0ff; }
+
+    .card h3 {
       font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 13px;
       color: #888;
+      line-height: 1.6;
+    }
+
+    /* ── 통계 배너 ── */
+    .stats {
+      max-width: 1000px;
+      margin: 0 auto 60px;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+
+    .stat-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    }
+
+    .stat-card .number {
+      font-size: 32px;
+      font-weight: 800;
+      color: #4f6ef7;
+      margin-bottom: 4px;
+    }
+
+    .stat-card .label {
+      font-size: 13px;
+      color: #888;
+    }
+
+    /* ── 푸터 ── */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 13px;
+      color: #bbb;
+      border-top: 1px solid #e5e7eb;
     }
   </style>
 </head>
 <body>
+
   <header>
     <span class="logo">TEST1</span>
-    <button class="logout-btn" onclick="window.location.href='login.html'">로그아웃</button>
+    <nav>
+      <a href="#">홈</a>
+      <a href="#">서비스</a>
+      <a href="#">공지사항</a>
+    </nav>
+    <div class="header-right">
+      <div class="avatar">U</div>
+      <button class="logout-btn" onclick="window.location.href='login.html'">로그아웃</button>
+    </div>
   </header>
 
   <div class="hero">
     <h1>환영합니다!</h1>
-    <p>로그인에 성공했습니다.</p>
+    <p>로그인에 성공했습니다. 오늘도 좋은 하루 보내세요.</p>
+    <button class="hero-btn">시작하기</button>
   </div>
+
+  <div class="section">
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon icon-blue">📊</div>
+        <h3>대시보드</h3>
+        <p>주요 지표와 활동 현황을 한눈에 확인하세요.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-green">✅</div>
+        <h3>할 일 관리</h3>
+        <p>오늘의 할 일을 정리하고 진행 상황을 추적하세요.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-purple">⚙️</div>
+        <h3>설정</h3>
+        <p>계정 정보와 서비스 환경을 원하는 대로 설정하세요.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card">
+      <div class="number">128</div>
+      <div class="label">전체 사용자</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">34</div>
+      <div class="label">오늘 방문자</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">97%</div>
+      <div class="label">서비스 가동률</div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 TEST1. All rights reserved.
+  </footer>
+
 </body>
 </html>

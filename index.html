@@ -266,15 +266,15 @@
 
   <div class="stats">
     <div class="stat-card">
-      <div class="number">128</div>
+      <div class="number" data-target="128" data-suffix="">0</div>
       <div class="label">전체 사용자</div>
     </div>
     <div class="stat-card">
-      <div class="number">34</div>
+      <div class="number" data-target="34" data-suffix="">0</div>
       <div class="label">오늘 방문자</div>
     </div>
     <div class="stat-card">
-      <div class="number">97%</div>
+      <div class="number" data-target="97" data-suffix="%">0%</div>
       <div class="label">서비스 가동률</div>
     </div>
   </div>
@@ -283,5 +283,33 @@
     &copy; 2026 TEST1. All rights reserved.
   </footer>
 
+  <script>
+    const counters = document.querySelectorAll('.number[data-target]');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        observer.unobserve(entry.target);
+
+        const el = entry.target;
+        const target = +el.dataset.target;
+        const suffix = el.dataset.suffix || '';
+        const duration = 1200;
+        const startTime = performance.now();
+
+        function update(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(eased * target) + suffix;
+          if (progress < 1) requestAnimationFrame(update);
+        }
+
+        requestAnimationFrame(update);
+      });
+    }, { threshold: 0.3 });
+
+    counters.forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>

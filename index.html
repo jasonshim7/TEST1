@@ -151,6 +151,10 @@
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
+    .card {
+      cursor: pointer;
+    }
+
     .card:hover {
       transform: translateY(-4px);
       box-shadow: 0 10px 28px rgba(0,0,0,0.1);
@@ -246,17 +250,17 @@
 
   <div class="section">
     <div class="cards">
-      <div class="card">
+      <div class="card" onclick="location.href='dashboard.html'">
         <div class="card-icon icon-blue">📊</div>
         <h3>대시보드</h3>
         <p>주요 지표와 활동 현황을 한눈에 확인하세요.</p>
       </div>
-      <div class="card">
+      <div class="card" onclick="location.href='todo.html'">
         <div class="card-icon icon-green">✅</div>
         <h3>할 일 관리</h3>
         <p>오늘의 할 일을 정리하고 진행 상황을 추적하세요.</p>
       </div>
-      <div class="card">
+      <div class="card" onclick="location.href='settings.html'">
         <div class="card-icon icon-purple">⚙️</div>
         <h3>설정</h3>
         <p>계정 정보와 서비스 환경을 원하는 대로 설정하세요.</p>

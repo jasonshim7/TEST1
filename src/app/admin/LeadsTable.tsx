@@ -8,7 +8,7 @@ type Lead = {
   name: string;
   email: string;
   phone: string;
-  createdAt: Date;
+  createdAt: string;
 };
 
 export default function LeadsTable({ leads }: { leads: Lead[] }) {
@@ -156,7 +156,7 @@ function LeadRow({ lead }: { lead: Lead }) {
   );
 }
 
-function formatDate(date: Date) {
+function formatDate(date: string) {
   return new Date(date).toLocaleString("ko-KR", {
     year: "numeric",
     month: "2-digit",

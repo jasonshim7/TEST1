@@ -6,7 +6,8 @@ import LeadsTable from "./LeadsTable";
 export const dynamic = "force-dynamic";
 
 export default async function AdminPage() {
-  const data = await db.select().from(leads).orderBy(desc(leads.createdAt));
+  const rows = await db.select().from(leads).orderBy(desc(leads.createdAt));
+  const data = rows.map((r) => ({ ...r, createdAt: r.createdAt.toISOString() }));
 
   return (
     <main className="min-h-screen bg-gray-50">

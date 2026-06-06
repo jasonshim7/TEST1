@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>회원가입</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      padding: 40px 36px;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #888;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 6px;
+    }
+
+    input {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #1a1a1a;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #4f6ef7;
+    }
+
+    input.error {
+      border-color: #e53e3e;
+    }
+
+    .error-msg {
+      font-size: 12px;
+      color: #e53e3e;
+      margin-top: 4px;
+      display: none;
+    }
+
+    .error-msg.visible {
+      display: block;
+    }
+
+    .row {
+      display: flex;
+      gap: 12px;
+    }
+
+    .row .form-group {
+      flex: 1;
+    }
+
+    .terms {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 22px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .terms input[type="checkbox"] {
+      width: auto;
+      margin-top: 2px;
+      cursor: pointer;
+    }
+
+    .terms a {
+      color: #4f6ef7;
+      text-decoration: none;
+    }
+
+    .terms a:hover {
+      text-decoration: underline;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 13px;
+      background: #4f6ef7;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button[type="submit"]:hover {
+      background: #3a57e8;
+    }
+
+    .login-link {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 13px;
+      color: #888;
+    }
+
+    .login-link a {
+      color: #4f6ef7;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+
+    .success-msg {
+      display: none;
+      background: #e6ffed;
+      border: 1px solid #68d391;
+      border-radius: 8px;
+      padding: 14px;
+      text-align: center;
+      color: #276749;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>회원가입</h1>
+    <p class="subtitle">계정을 만들어 시작하세요</p>
+
+    <div class="success-msg" id="successMsg">가입이 완료되었습니다! 환영합니다.</div>
+
+    <form id="signupForm" novalidate>
+      <div class="row">
+        <div class="form-group">
+          <label for="lastName">성</label>
+          <input type="text" id="lastName" placeholder="홍" />
+          <span class="error-msg" id="lastNameErr">성을 입력하세요.</span>
+        </div>
+        <div class="form-group">
+          <label for="firstName">이름</label>
+          <input type="text" id="firstName" placeholder="길동" />
+          <span class="error-msg" id="firstNameErr">이름을 입력하세요.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">이메일</label>
+        <input type="email" id="email" placeholder="example@email.com" />
+        <span class="error-msg" id="emailErr">유효한 이메일을 입력하세요.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="password">비밀번호</label>
+        <input type="password" id="password" placeholder="8자 이상 입력" />
+        <span class="error-msg" id="passwordErr">비밀번호는 8자 이상이어야 합니다.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="passwordConfirm">비밀번호 확인</label>
+        <input type="password" id="passwordConfirm" placeholder="비밀번호 재입력" />
+        <span class="error-msg" id="passwordConfirmErr">비밀번호가 일치하지 않습니다.</span>
+      </div>
+
+      <div class="terms">
+        <input type="checkbox" id="agree" />
+        <label for="agree" style="font-weight: normal; margin-bottom: 0;">
+          <a href="#">이용약관</a> 및 <a href="#">개인정보처리방침</a>에 동의합니다.
+        </label>
+      </div>
+
+      <button type="submit">가입하기</button>
+    </form>
+
+    <p class="login-link">이미 계정이 있으신가요? <a href="#">로그인</a></p>
+  </div>
+
+  <script>
+    const form = document.getElementById('signupForm');
+
+    function showError(inputId, errId, show) {
+      const input = document.getElementById(inputId);
+      const err = document.getElementById(errId);
+      if (show) {
+        input.classList.add('error');
+        err.classList.add('visible');
+      } else {
+        input.classList.remove('error');
+        err.classList.remove('visible');
+      }
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      let valid = true;
+
+      const lastName = document.getElementById('lastName').value.trim();
+      const firstName = document.getElementById('firstName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const passwordConfirm = document.getElementById('passwordConfirm').value;
+      const agree = document.getElementById('agree').checked;
+
+      showError('lastName', 'lastNameErr', !lastName);
+      if (!lastName) valid = false;
+
+      showError('firstName', 'firstNameErr', !firstName);
+      if (!firstName) valid = false;
+
+      const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      showError('email', 'emailErr', !emailValid);
+      if (!emailValid) valid = false;
+
+      showError('password', 'passwordErr', password.length < 8);
+      if (password.length < 8) valid = false;
+
+      showError('passwordConfirm', 'passwordConfirmErr', password !== passwordConfirm);
+      if (password !== passwordConfirm) valid = false;
+
+      if (!agree) {
+        alert('이용약관에 동의해 주세요.');
+        valid = false;
+      }
+
+      if (valid) {
+        form.style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
